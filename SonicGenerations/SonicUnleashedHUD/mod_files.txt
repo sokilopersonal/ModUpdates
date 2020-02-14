@@ -1,3 +1,6 @@
 add mod.ini
 add UnleashedHUD.ini
 add UnleashedHUD.dll
+add disk/bb/SonicActionCommonHud.ar.00
+add disk/bb/SonicActionCommonHud.ar.01
+add disk/bb/SonicActionCommonHud.arl
