@@ -1,3 +1,3 @@
 add mod.ini
 add HE2.png
-add disk\bb\HE2.png
+add disk/bb/HE2.png
