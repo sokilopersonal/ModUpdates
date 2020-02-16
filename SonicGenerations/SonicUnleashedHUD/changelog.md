@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.2
+- Added support for PlayStation button prompts. Please edit the "UnleashedHUD.ini" file in the mod's root directory.
+
 ## Sonic Unleashed HUD v1.1.3
 - Fixed **AGAIN** the broken "Ready GO!" intro animation when the game is set to English.
 

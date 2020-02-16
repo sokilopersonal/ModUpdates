@@ -25,4 +25,8 @@ add disk/bb3/SonicActionCommonHud.arl
 add disk/bb3/SonicActionCommon.ar.00
 add disk/bb3/SonicActionCommon.ar.01
 add disk/bb3/SonicActionCommon.arl
+add disk/bb2/HowTo.ar.00
+add disk/bb2/HowTo.arl
+add disk/bb2/pam_cmn.ar.00
+add disk/bb2/pam_cmn.arl
 delete disk/bb/SonicActionCommon.ar.01
