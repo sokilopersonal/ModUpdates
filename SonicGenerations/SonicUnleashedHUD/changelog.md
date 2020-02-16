@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.1.1
+- Fixed broken "Ready GO!" intro animation when the game is set to English.
+
 ## Sonic Unleashed HUD v1.1
 - Fixed boost bar "Ring Energy" text not displaying in languages other than English and Japanese;
 - Added multiple language support for the "Ready GO!" intro animation.
