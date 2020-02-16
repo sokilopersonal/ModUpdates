@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.1.3
+- Fixed **AGAIN** the broken "Ready GO!" intro animation when the game is set to English.
+
 ## Sonic Unleashed HUD v1.1.2
 - Fixed broken "Ready GO!" intro animation when the game is set to English.
 
