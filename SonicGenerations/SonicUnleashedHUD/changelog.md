@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.2.1
+- Adjusted PlayStation bumper alignement/size.
+
 ## Sonic Unleashed HUD v1.2
 - Added support for PlayStation button prompts. Please edit the "UnleashedHUD.ini" file in the mod's root directory.
 
