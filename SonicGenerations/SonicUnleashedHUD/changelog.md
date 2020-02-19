@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.3
+- Remade PlayStation buttons to be higher res and have even better alignement;
+- Overhauled menu sounds by Mario Tainaka.
+
 ## Sonic Unleashed HUD v1.2.1
 - Adjusted PlayStation bumper alignement/size.
 

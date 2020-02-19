@@ -29,4 +29,6 @@ add disk/bb2/HowTo.ar.00
 add disk/bb2/HowTo.arl
 add disk/bb2/pam_cmn.ar.00
 add disk/bb2/pam_cmn.arl
+add disk/bb3/Application.ar.00
+add disk/bb3/Application.arl
 delete disk/bb/SonicActionCommon.ar.01
