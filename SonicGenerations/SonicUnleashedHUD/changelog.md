@@ -1,7 +1,7 @@
 ## Sonic Unleashed HUD v1.3.2
 Unleashed Menu Sounds fixes:
-- Fixed press start volume. now it's full stereo on it's own without relying on two Synths
-- Fixed stage title reveal sound sonic team used two synths to make the sound stereo. now it's real stereo with only one sound 
+- Fixed press start volume. Now it's full stereo on it's own without relying on two Synths;
+- Fixed stage title reveal sound. Sonic Team used two synths to make the sound stereo, so now it's real stereo with only one sound.
 
 ## Sonic Unleashed HUD v1.3.1
 - *forgot to include the Bumper Textures woops...*
