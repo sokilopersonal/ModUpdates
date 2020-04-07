@@ -6,6 +6,10 @@
 #include "inipp.h"
 #include <fstream>
 
+#define PS3BUTTONS 1
+#define FIXEXTENDED 2
+#define PS3BUTTONS_FIXEXTENDED 3
+
 int mode = 0;	// Sets the HUD mode. This variable is updated inside the ReadIni() method.
 
 extern "C"
@@ -89,14 +93,14 @@ extern "C"
 		ReadIni();
 
 		switch (mode) {
-		case 1:
+		case PS3BUTTONS:
 			WriteUiGameplay(uiname_ps);
 			WritePlaystationButtons();
 			break;
-		case 2:
+		case FIXEXTENDED:
 			WriteUiGameplay(uiname_ext);
 			break;
-		case 3:
+		case PS3BUTTONS_FIXEXTENDED:
 			WriteUiGameplay(uiname_psext);
 			WritePlaystationButtons();
 			break;

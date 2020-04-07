@@ -1,0 +1,50 @@
+{
+    "Groups": [
+      {
+        "Name": "HUD",
+        "DisplayName": "Settings",
+        "Elements": [
+          {
+            "Name": "fixBoostGaugeUp",
+            "Description": [
+                "Set this value to true to fix the size of the boost bar when using the Boost Gauge Up skill.",
+                "This will break the size of the normal boost bar though."
+            ],
+            "DisplayName": "Fix 'Boost Gauge Up' Skill",
+            "Type": "ToggleEnum",
+            "MinValue": null,
+            "MaxValue": null,
+            "DefaultValue": "false"
+          },
+          {
+            "Name": "ps3Buttons",
+            "Description": [
+                "Enable PlayStation button prompts."
+            ],
+            "DisplayName": "PlayStation 3 Buttons",
+            "Type": "ToggleEnum",
+            "MinValue": null,
+            "MaxValue": null,
+            "DefaultValue": "false"
+          }
+        ]
+      }
+    ],
+    "Enums": {
+      "ToggleEnum": [
+        {
+          "DisplayName": "Enabled",
+          "Value": "true",
+          "Description": [
+          ]
+        },
+        {
+          "DisplayName": "Disabled",
+          "Value": "false",
+          "Description": [
+          ]
+        }
+      ]
+    },
+    "IniFile": "UnleashedHUD.ini"
+  }

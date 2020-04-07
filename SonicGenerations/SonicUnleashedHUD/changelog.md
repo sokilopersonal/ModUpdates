@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.4
+- Implemented HMM Mod Configuration support. Right click the mod in HedgeModManager to configure it.
+
 ## Sonic Unleashed HUD v1.3.2
 Unleashed Menu Sounds fixes:
 - Fixed press start volume. Now it's full stereo on it's own without relying on two Synths;
