@@ -17,15 +17,15 @@
             "DefaultValue": "false"
           },
           {
-            "Name": "ps3Buttons",
+            "Name": "buttons",
             "Description": [
-                "Enable PlayStation button prompts."
+                "Select the type of button prompts"
             ],
-            "DisplayName": "PlayStation 3 Buttons",
-            "Type": "ToggleEnum",
+            "DisplayName": "Button Prompts",
+            "Type": "ButtonEnum",
             "MinValue": null,
             "MaxValue": null,
-            "DefaultValue": "false"
+            "DefaultValue": "xbox"
           }
         ]
       }
@@ -41,6 +41,26 @@
         {
           "DisplayName": "Disabled",
           "Value": "false",
+          "Description": [
+          ]
+        }
+      ],
+      "ButtonEnum": [
+        {
+          "DisplayName": "Xbox 360",
+          "Value": "0",
+          "Description": [
+          ]
+        },
+        {
+          "DisplayName": "PlayStation 3",
+          "Value": "1",
+          "Description": [
+          ]
+        },
+        {
+          "DisplayName": "Switch Pro Controller",
+          "Value": "2",
           "Description": [
           ]
         }

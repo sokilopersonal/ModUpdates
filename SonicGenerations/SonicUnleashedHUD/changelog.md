@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.5
+- Added support for Switch button prompts. Select it from the available buttons in the "Configure Mod" window in HedgeModManager.
+
 ## Sonic Unleashed HUD v1.4
 - Implemented HMM Mod Configuration support. Right click the mod in HedgeModManager to configure it.
 
