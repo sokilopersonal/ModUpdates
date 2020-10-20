@@ -34,7 +34,8 @@ bool getUiGameplay(int buttonType, bool isFixExtended, char* dest) {
 		case XBOX:
 			if (isFixExtended) 
 				memcpy(dest, "ui_gameplaa", 11);
-			else 
+			else
+				// No change needed
 				return false;
 			break;
 		case PS3:

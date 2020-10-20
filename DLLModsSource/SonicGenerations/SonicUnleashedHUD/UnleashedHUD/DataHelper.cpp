@@ -49,13 +49,8 @@ void WriteButtons(int buttonType) {
 }
 
 void WriteUi(int buttonType, bool fixExtended) {
-	// Used to add Unleashed's Ready GO animation without breaking missions.
-	const char* gpsignal = "ui_gp_signul";
-	// Used to keep the original Generations lock on cursor in the Time Eater boss battle.
-	const char* lockon = "ui_lockon_cursar";
-
-	ForceWriteData((void*)0x0168F1EC, gpsignal, 12);	// Address of the ui_gp_signal XNCP that's used in gameplay, and not in missions
-	ForceWriteData((void*)0x0155E5D8, lockon, 16);		// Address of the ui_lockon_cursur XNCP that's used in the Time Eater boss battle
+	ForceWriteData((void*)0x0168F1EC, "ui_gp_signul", 12);			// Used to add Unleashed's Ready GO animation without breaking missions.
+	ForceWriteData((void*)0x0155E5D8, "ui_lockon_cursar", 16);		// Used to keep the original Generations lock on cursor in the Time Eater boss battle.
 
 	char ui[11];
 	if (getUiGameplay(buttonType, fixExtended, ui)) {
