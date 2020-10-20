@@ -151,11 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="dllmain.h" />
+    <ClInclude Include="Controllers.h" />
+    <ClInclude Include="DataHelper.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="inipp.h" />
+    <ClInclude Include="MemAccess.h" />
+    <ClInclude Include="ModLoader.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Controllers.cpp" />
+    <ClCompile Include="DataHelper.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

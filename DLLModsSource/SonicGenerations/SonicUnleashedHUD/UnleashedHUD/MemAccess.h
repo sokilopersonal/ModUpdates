@@ -8,7 +8,7 @@
 
 #include <stdint.h>
 
-// Utility Functions
+ // Utility Functions
 #ifdef __cplusplus
 // C++ version.
 
@@ -57,8 +57,8 @@ static inline Tret SizeOfArray(const T(&)[N])
 
 #endif
 
-// Macros for functions that need both an array
-// and the array length or size.
+ // Macros for functions that need both an array
+ // and the array length or size.
 #define arrayptrandlength(data) data, LengthOfArray(data)
 #define arraylengthandptr(data) LengthOfArray(data), data
 #define arrayptrandsize(data) data, SizeOfArray(data)
@@ -71,48 +71,48 @@ static inline Tret SizeOfArray(const T(&)[N])
 
 static const HANDLE curproc = GetCurrentProcess();
 
-static inline BOOL WriteData(void *writeaddress, const void *data, SIZE_T datasize, SIZE_T *byteswritten)
+static inline BOOL WriteData(void* writeaddress, const void* data, SIZE_T datasize, SIZE_T* byteswritten)
 {
 	return WriteProcessMemory(curproc, writeaddress, data, datasize, byteswritten);
 }
 
-static inline BOOL WriteData(void *writeaddress, const void *data, SIZE_T datasize)
+static inline BOOL WriteData(void* writeaddress, const void* data, SIZE_T datasize)
 {
 	return WriteData(writeaddress, data, datasize, nullptr);
 }
 
 template<typename T>
-static inline BOOL WriteData(T const *writeaddress, const T data, SIZE_T *byteswritten)
+static inline BOOL WriteData(T const* writeaddress, const T data, SIZE_T* byteswritten)
 {
 	return WriteData((void*)writeaddress, (void*)&data, (SIZE_T)sizeof(data), byteswritten);
 }
 
 template<typename T>
-static inline BOOL WriteData(T const *writeaddress, const T data)
+static inline BOOL WriteData(T const* writeaddress, const T data)
 {
 	return WriteData(writeaddress, data, nullptr);
 }
 
 template<typename T>
-static inline BOOL WriteData(T *writeaddress, const T &data, SIZE_T *byteswritten)
+static inline BOOL WriteData(T* writeaddress, const T& data, SIZE_T* byteswritten)
 {
 	return WriteData(writeaddress, &data, sizeof(data), byteswritten);
 }
 
 template<typename T>
-static inline BOOL WriteData(T *writeaddress, const T &data)
+static inline BOOL WriteData(T* writeaddress, const T& data)
 {
 	return WriteData(writeaddress, data, nullptr);
 }
 
 template <typename T, size_t N>
-static inline BOOL WriteData(void *writeaddress, const T(&data)[N], SIZE_T *byteswritten)
+static inline BOOL WriteData(void* writeaddress, const T(&data)[N], SIZE_T* byteswritten)
 {
 	return WriteData(writeaddress, data, SizeOfArray(data), byteswritten);
 }
 
 template <typename T, size_t N>
-static inline BOOL WriteData(void *writeaddress, const T(&data)[N])
+static inline BOOL WriteData(void* writeaddress, const T(&data)[N])
 {
 	return WriteData(writeaddress, data, nullptr);
 }
@@ -125,7 +125,7 @@ static inline BOOL WriteData(void *writeaddress, const T(&data)[N])
  * @return Nonzero on success; 0 on error (check GetLastError()).
  */
 template <int count>
-static inline BOOL WriteData(void *address, const char data, SIZE_T *byteswritten)
+static inline BOOL WriteData(void* address, const char data, SIZE_T* byteswritten)
 {
 	char buf[count];
 	memset(buf, data, count);
@@ -140,7 +140,7 @@ static inline BOOL WriteData(void *address, const char data, SIZE_T *byteswritte
  * @return Nonzero on success; 0 on error (check GetLastError()).
  */
 template <int count>
-static inline BOOL WriteData(void *address, char data)
+static inline BOOL WriteData(void* address, char data)
 {
 	return WriteData<count>(address, data, nullptr);
 }
@@ -153,7 +153,7 @@ static inline BOOL WriteData(void *address, char data)
  * @param funcaddress Address to JMP to.
  * @return Nonzero on success; 0 on error (check GetLastError()).
  */
-static inline BOOL WriteJump(void *writeaddress, void *funcaddress)
+static inline BOOL WriteJump(void* writeaddress, void* funcaddress)
 {
 	uint8_t data[5];
 	data[0] = 0xE9; // JMP DWORD (relative)
@@ -167,7 +167,7 @@ static inline BOOL WriteJump(void *writeaddress, void *funcaddress)
  * @param funcaddress Address to CALL.
  * @return Nonzero on success; 0 on error (check GetLastError()).
  */
-static inline BOOL WriteCall(void *writeaddress, void *funcaddress)
+static inline BOOL WriteCall(void* writeaddress, void* funcaddress)
 {
 	uint8_t data[5];
 	data[0] = 0xE8; // CALL DWORD (relative)
