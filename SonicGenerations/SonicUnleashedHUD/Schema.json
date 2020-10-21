@@ -47,13 +47,13 @@
       ],
       "ButtonEnum": [
         {
-          "DisplayName": "Xbox 360",
+          "DisplayName": "Xbox 360 Controller",
           "Value": "0",
           "Description": [
           ]
         },
         {
-          "DisplayName": "PlayStation 3",
+          "DisplayName": "DUALSHOCK 3 (PlayStation 3)",
           "Value": "1",
           "Description": [
           ]

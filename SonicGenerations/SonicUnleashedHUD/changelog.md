@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.5.1
+- Fixed a bug where the buttons were stuck on Xbox 360 mode;
+- Changed the names of the button prompt options to better represent their respective controllers.
+
 ## Sonic Unleashed HUD v1.5
 - Added support for Switch button prompts. Select it from the available buttons in the "Configure Mod" window in HedgeModManager.
 
