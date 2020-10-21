@@ -15,25 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Controllers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DataHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inipp.h">
+    <ClInclude Include="include\inipp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ModLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MemAccess.h">
+    <ClInclude Include="include\ModLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +29,22 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DataHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Controllers.cpp">
+    <ClCompile Include="controllers\Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\Controller.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\Dualshock3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\Switch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\Xbox360.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,10 +1,8 @@
-#include "pch.h"
-
 #include <fstream>
-#include "inipp.h"
-#include "ModLoader.h"
-#include "Controllers.h"
+
 #include "DataHelper.h"
+#include "include\inipp.h"
+#include "include\ModLoader.h"
 
 #define INI_FILE "UnleashedHUD.ini"
 
@@ -29,8 +27,7 @@ int ReadIni()
 extern "C" __declspec(dllexport) void Init(const char* path)
 {
 	int buttonType = ReadIni();
-	WriteButtons(buttonType);
-	WriteUi(buttonType, isFixExtended);
+	WriteData(buttonType, isFixExtended);
 }
 
 __declspec(dllexport) ModInfo GensModInfo = { ModLoaderVer, GameVer };
