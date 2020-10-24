@@ -4,6 +4,11 @@
 #include "Controllers\Controller.h"
 
 /**
+	The game's process. Used in ForceWriteData()
+**/
+const HANDLE process = GetCurrentProcess();
+
+/**
 	Changes permissions of a memory zone, writes on it,
 	and then restores the previous permissions.
 **/
@@ -12,7 +17,7 @@ bool ForceWriteData(void* address, const char* data, size_t size) {
 	bool result = false;
 
 	result = VirtualProtect(address, size, PAGE_READWRITE, &old);
-	WriteProcessMemory(GetCurrentProcess(), address, data, size, nullptr);
+	WriteProcessMemory(process, address, data, size, nullptr);
 	VirtualProtect(address, size, old, &old);
 	return result;
 }
