@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.6
+- Remade some hud elements from scratch, like the boost bar, in a higher resolution;
+- Re-aligned Xbox bumpers.
+
 ## Sonic Unleashed HUD v1.5.1
 - Fixed a bug where the buttons were stuck on Xbox 360 mode;
 - Changed the names of the button prompt options to better represent their respective controllers.

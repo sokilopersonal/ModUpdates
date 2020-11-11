@@ -33,3 +33,4 @@ add disk/bb2/pam_cmn.arl
 add disk/bb3/Application.ar.00
 add disk/bb3/Application.arl
 delete disk/bb/SonicActionCommon.ar.01
+delete disk/bb/SonicActionCommonHud.ar.01
