@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.6.1
+- Switched to using uncompressed DDS textures for higher quality;
+- Further tweaked the boost bar.
+
 ## Sonic Unleashed HUD v1.6
 - Remade some hud elements from scratch, like the boost bar, in a higher resolution;
 - Re-aligned Xbox bumpers.
