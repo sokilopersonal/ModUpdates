@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.6.2
+- Fixed not getting boost from trick rings;
+- Fixed boost bar's right slant being cut and the gradients in the left slant.
+
 ## Sonic Unleashed HUD v1.6.1
 - Switched to using uncompressed DDS textures for higher quality;
 - Further tweaked the boost bar.
