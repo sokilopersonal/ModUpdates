@@ -5,6 +5,7 @@
 #define XBOX360 0
 #define PS3 1
 #define SWITCH 2
+#define XBOXSERIES 3
 
 /**
 	Struct used to get the names of XNCP files used by the various controller types.
@@ -37,5 +38,8 @@ namespace Switch {
 	ControllerInfo getControllerInfo(bool isFixExtended);
 }
 namespace Xbox360 {
+	ControllerInfo getControllerInfo(bool isFixExtended);
+}
+namespace XboxSeries {
 	ControllerInfo getControllerInfo(bool isFixExtended);
 }

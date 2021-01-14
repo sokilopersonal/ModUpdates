@@ -10,6 +10,8 @@ ControllerInfo GetXncpNames(int buttonType, bool isFixExtended)
 			return Switch::getControllerInfo(isFixExtended);
 		case XBOX360:
 			return Xbox360::getControllerInfo(isFixExtended);
+		case XBOXSERIES:
+			return XboxSeries::getControllerInfo(isFixExtended);
 		default:
 			return { };
 	}

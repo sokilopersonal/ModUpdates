@@ -30,6 +30,9 @@ void WriteButtons(ControllerInfo info) {
 	ForceWriteData((void*)0x016A6B9C, info.win, 9);
 
 	ForceWriteData((void*)0x016A93CC, info.pam, 6);
+	ForceWriteData((void*)0x0168B294, info.pam, 6);
+	ForceWriteData((void*)0x0168B3C8, info.pam, 6);
+	ForceWriteData((void*)0x0168B780, info.pam, 6);
 
 	ForceWriteData((void*)0x01579524, info.trick, 11);
 	ForceWriteData((void*)0x016D84F8, info.trick, 11);

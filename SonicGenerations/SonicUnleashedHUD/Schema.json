@@ -63,6 +63,12 @@
           "Value": "2",
           "Description": [
           ]
+        },
+        {
+          "DisplayName": "Xbox Series X|S Controller",
+          "Value": "3",
+          "Description": [
+          ]
         }
       ]
     },

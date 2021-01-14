@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.7
+- Added support for Xbox Series X|S button prompts. Select it from the available buttons in the "Configure Mod" window in HedgeModManager.
+
 ## Sonic Unleashed HUD v1.6.2
 - Fixed not getting boost from trick rings;
 - Fixed boost bar's right slant being cut and the gradients in the left slant.

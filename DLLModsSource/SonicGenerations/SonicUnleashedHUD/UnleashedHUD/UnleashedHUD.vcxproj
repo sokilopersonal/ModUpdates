@@ -164,6 +164,7 @@
     <ClCompile Include="controllers\Dualshock3.cpp" />
     <ClCompile Include="controllers\Switch.cpp" />
     <ClCompile Include="controllers\Xbox360.cpp" />
+    <ClCompile Include="controllers\XboxSeries.cpp" />
     <ClCompile Include="DataHelper.cpp" />
     <ClCompile Include="dllmain.cpp" />
   </ItemGroup>
