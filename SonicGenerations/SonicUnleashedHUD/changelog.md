@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.7.1
+- Fixed a problem in the boost bar's gradient when using forced Anisotropic Filtering and BetterFXPipeline.
+
 ## Sonic Unleashed HUD v1.7
 - Added support for Xbox Series X|S button prompts. Select it from the available buttons in the "Configure Mod" window in HedgeModManager.
 
