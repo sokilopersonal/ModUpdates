@@ -35,11 +35,11 @@ Unleashed Menu Sounds fixes:
 - *forgot to include the Bumper Textures woops...*
 
 ## Sonic Unleashed HUD v1.3
-- Remade PlayStation buttons to be higher res and have even better alignement;
+- Remade PlayStation buttons to be higher res and have even better alignment;
 - Overhauled menu sounds by Mario Tainaka.
 
 ## Sonic Unleashed HUD v1.2.1
-- Adjusted PlayStation bumper alignement/size.
+- Adjusted PlayStation bumper alignment/size.
 
 ## Sonic Unleashed HUD v1.2
 - Added support for PlayStation button prompts. Please edit the "UnleashedHUD.ini" file in the mod's root directory.
