@@ -1,0 +1,124 @@
+{
+    "Groups": 
+	[
+		{
+			"Name": "Appearance",
+			"DisplayName": "Appearance",
+			"Elements": 
+			[
+				{
+					"Name": "ringFormatter",
+					"Description": [
+						"Enable this to reduce the number of zeroes for the ring counter."
+					],
+					"DisplayName": "Use Forces' Ring Formatting",
+					"Type": "bool",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": true
+				},
+				{
+					"Name": "homingReticle",
+					"Description": [
+						"Enable this to display the homing reticle from Sonic Forces."
+					],
+					"DisplayName": "Use Forces' Homing Reticle",
+					"Type": "bool",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": true
+				},
+				{
+					"Name": "boostText",
+					"Description": [
+						"Enable this to display the 'BOOST' text under the boost gauge - depending on lighting conditions, it can be hard to see."
+					],
+					"DisplayName": "Display 'BOOST' under the Boost Gauge",
+					"Type": "bool",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": true
+				},
+				{
+					"Name": "buttonType",
+					"Description": [
+						"Select the type of button prompts to show in the game."
+					],
+					"DisplayName": "Button Prompts",
+					"Type": "ButtonType",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": "0"
+				},
+			]
+		},
+		{
+			"Name": "CPKs",
+			"DisplayName": "Sounds",
+			"Elements":
+			[
+				{
+					"Name": "disk\\bb3.cpk",
+					"Description": [
+						"Choose what game you want the UI sounds to be from."
+					],
+					"DisplayName": "Menu Sounds",
+					"Type": "SoundType",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": "disk\\wars_3\\bb3-forces.ini"
+				},
+			]
+		},
+	],
+	"Enums": 
+	{
+		"SoundType": 
+		[
+			{
+				"DisplayName": "Forces",
+				"Value": "disk\\wars_3\\bb3-forces.ini",
+				"Description": 
+				[
+					"Sonic Generations menu sounds.",
+				]
+			},
+			{
+				"DisplayName": "Generations",
+				"Value": "disk\\wars_3\\bb3.ini",
+				"Description": 
+				[
+					"Sonic Forces menu sounds.",
+				]
+			},
+		],
+		"ButtonType": 
+		[
+			{
+				"DisplayName": "Xbox",
+				"Value": "0",
+				"Description": 
+				[
+					"Xbox Controller button prompts",
+				]
+			},
+			{
+				"DisplayName": "PlayStation",
+				"Value": "1",
+				"Description": 
+				[
+					"DUALSHOCK 4 button prompts",
+				]
+			},
+			{
+				"DisplayName": "Switch",
+				"Value": "2",
+				"Description": 
+				[
+					"Switch Controller button prompts",
+				]
+			}
+		]
+	},
+    "IniFile": "mod.ini"
+}

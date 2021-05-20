@@ -1,0 +1,4 @@
+add mod.ini
+add ForcesHUD.dll
+add ForcesHUD.json
+add ScoreGenerations.ini
