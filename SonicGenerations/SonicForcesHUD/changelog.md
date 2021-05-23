@@ -1,4 +1,8 @@
-## Sonic Forces HUD v1.0.2 
+## Sonic Forces HUD v1.0.3
+- Fixes Lock-On sound not playing in HUB
+- Public release!
+
+## Sonic Forces HUD v1.0.2 (RC3)
 - Adds Forces Lock-On sound
 
 ## Sonic Forces HUD v1.0.1 (RC2)
