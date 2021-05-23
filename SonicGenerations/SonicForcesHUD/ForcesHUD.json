@@ -49,7 +49,25 @@
 					"MinValue": null,
 					"MaxValue": null,
 					"DefaultValue": "0"
-				},
+				}
+			]
+		},
+		{
+			"Name": "Behaviour",
+			"DisplayName": "Behaviour",
+			"Elements":
+			[
+				{
+					"Name": "difficultyType",
+					"Description": [
+						"Choose how the rings behave based on the difficulty settings from Sonic Forces."
+					],
+					"DisplayName": "Difficulty",
+					"Type": "DifficultyType",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": "Hard"
+				}
 			]
 		},
 		{
@@ -67,9 +85,9 @@
 					"MinValue": null,
 					"MaxValue": null,
 					"DefaultValue": "disk\\wars_3\\bb3-forces.ini"
-				},
+				}
 			]
-		},
+		}
 	],
 	"Enums": 
 	{
@@ -90,7 +108,7 @@
 				[
 					"Sonic Forces menu sounds.",
 				]
-			},
+			}
 		],
 		"ButtonType": 
 		[
@@ -99,7 +117,7 @@
 				"Value": "0",
 				"Description": 
 				[
-					"Xbox Controller button prompts",
+					"Use Xbox One button prompts.",
 				]
 			},
 			{
@@ -107,7 +125,7 @@
 				"Value": "1",
 				"Description": 
 				[
-					"DUALSHOCK 4 button prompts",
+					"Use DualShock 4 button prompts.",
 				]
 			},
 			{
@@ -115,7 +133,26 @@
 				"Value": "2",
 				"Description": 
 				[
-					"Switch Controller button prompts",
+					"Use Switch button prompts.",
+				]
+			}
+		],
+		"DifficultyType": 
+		[
+			{
+				"DisplayName": "Normal",
+				"Value": "0",
+				"Description": 
+				[
+					"Cap the rings at 100.",
+				]
+			},
+			{
+				"DisplayName": "Hard",
+				"Value": "1",
+				"Description": 
+				[
+					"Cap the rings at 999.",
 				]
 			}
 		]
