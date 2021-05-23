@@ -67,6 +67,17 @@
 					"MinValue": null,
 					"MaxValue": null,
 					"DefaultValue": "Hard"
+				},
+				{
+					"Name": "alwaysActiveReticle",
+					"Description": [
+						"Enable this to make the homing reticle active at all times, just like Sonic Forces."
+					],
+					"DisplayName": "Always Active Homing Reticle",
+					"Type": "bool",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": true
 				}
 			]
 		},
@@ -78,13 +89,24 @@
 				{
 					"Name": "disk\\bb3.cpk",
 					"Description": [
-						"Choose what game you want the UI sounds to be from."
+						"Choose what game you want the menu sounds to be from."
 					],
 					"DisplayName": "Menu Sounds",
 					"Type": "SoundType",
 					"MinValue": null,
 					"MaxValue": null,
 					"DefaultValue": "disk\\wars_3\\bb3-forces.ini"
+				},
+				{
+					"Name": "homingSound",
+					"Description": [
+						"Enable this to use the homing lock-on sound from Sonic Forces."
+					],
+					"DisplayName": "Use Forces' Homing Sound",
+					"Type": "bool",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": true
 				}
 			]
 		}
@@ -98,7 +120,7 @@
 				"Value": "disk\\wars_3\\bb3-forces.ini",
 				"Description": 
 				[
-					"Sonic Generations menu sounds.",
+					"Use Sonic Forces menu sounds.",
 				]
 			},
 			{
@@ -106,7 +128,7 @@
 				"Value": "disk\\wars_3\\bb3.ini",
 				"Description": 
 				[
-					"Sonic Forces menu sounds.",
+					"Use Sonic Generations menu sounds.",
 				]
 			}
 		],
