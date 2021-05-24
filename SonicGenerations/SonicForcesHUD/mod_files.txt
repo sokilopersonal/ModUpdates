@@ -21,3 +21,7 @@ add disk/bb2/Languages/Japanese/bsd.arl
 add disk/bb2/Languages/Spanish/bsd.ar.00
 add disk/bb2/Languages/Spanish/bsd.ar.01
 add disk/bb2/Languages/Spanish/bsd.arl
+add disk/bb2/Loading.ar.00
+add disk/bb2/Loading.ar.01
+add disk/bb2/Loading.ar.02
+add disk/bb2/Loading.arl
