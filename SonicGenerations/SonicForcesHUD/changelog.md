@@ -1,3 +1,6 @@
+## Sonic Forces HUD v1.0.5
+- Improved support for Score Generations
+
 ## Sonic Forces HUD v1.0.4
 - Improved support for level mods in the loading screen
 - Tweaked Forces lock-on sound
