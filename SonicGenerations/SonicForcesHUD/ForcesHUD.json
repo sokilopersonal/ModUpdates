@@ -29,6 +29,17 @@
 					"DefaultValue": true
 				},
 				{
+					"Name": "windowTitle",
+					"Description": [
+						"Enable this to display the Sonic Forces icon and name on the title bar."
+					],
+					"DisplayName": "Use Forces' Window Title",
+					"Type": "bool",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": true
+				},
+				{
 					"Name": "boostText",
 					"Description": [
 						"Enable this to display the 'BOOST' text under the boost gauge - depending on lighting conditions, it can be hard to see."
