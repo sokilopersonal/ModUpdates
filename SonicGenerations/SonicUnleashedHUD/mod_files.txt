@@ -3,7 +3,6 @@ add UnleashedHUD.ini
 add UnleashedHUD.dll
 add Schema.json
 add disk/bb/SonicActionCommonHud.ar.00
-add disk/bb/SonicActionCommonHud.ar.01
 add disk/bb/SonicActionCommonHud.arl
 add disk/bb/SonicActionCommon.ar.00
 add disk/bb/SonicActionCommon.arl
