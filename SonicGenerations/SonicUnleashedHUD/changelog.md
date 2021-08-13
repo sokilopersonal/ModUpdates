@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.7.2
+- Added support for automatically detecting the Boost Gauge Up skill.
+- Removed the boost gauge up fix option in the mod's configuration.
+
 ## Sonic Unleashed HUD v1.7.1
 - Fixed a problem in the boost bar's gradient when using forced Anisotropic Filtering and BetterFXPipeline.
 

@@ -5,18 +5,6 @@
         "DisplayName": "HUD Settings",
         "Elements": [
           {
-            "Name": "fixBoostGaugeUp",
-            "Description": [
-                "Set this value to true to fix the size of the boost bar when using the Boost Gauge Up skill.",
-                "This will break the size of the normal boost bar though."
-            ],
-            "DisplayName": "Fix 'Boost Gauge Up' Skill",
-            "Type": "ToggleEnum",
-            "MinValue": null,
-            "MaxValue": null,
-            "DefaultValue": "false"
-          },
-          {
             "Name": "buttons",
             "Description": [
                 "Select the type of button prompts"
@@ -31,20 +19,6 @@
       }
     ],
     "Enums": {
-      "ToggleEnum": [
-        {
-          "DisplayName": "Enabled",
-          "Value": "true",
-          "Description": [
-          ]
-        },
-        {
-          "DisplayName": "Disabled",
-          "Value": "false",
-          "Description": [
-          ]
-        }
-      ],
       "ButtonEnum": [
         {
           "DisplayName": "Xbox 360 Controller",
