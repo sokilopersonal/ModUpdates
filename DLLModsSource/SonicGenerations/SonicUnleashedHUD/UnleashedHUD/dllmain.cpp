@@ -6,9 +6,6 @@
 
 #define INI_FILE "UnleashedHUD.ini"
 
-// Defines if it's to fix the boost bar in extended mode (skill based)
-bool isFixExtended = false;
-
 int ReadIni()
 {
 	int buttons = 0;
@@ -17,7 +14,6 @@ int ReadIni()
 	std::ifstream file(INI_FILE);
 	ini.parse(file);
 
-	inipp::extract(ini.sections["HUD"]["fixBoostGaugeUp"], isFixExtended);
 	inipp::extract(ini.sections["HUD"]["buttons"], buttons);
 
 	file.close();
@@ -27,7 +23,8 @@ int ReadIni()
 extern "C" __declspec(dllexport) void Init(const char* path)
 {
 	int buttonType = ReadIni();
-	WriteData(buttonType, isFixExtended);
+	WriteData(buttonType);
+	HookFunctions();
 }
 
 __declspec(dllexport) ModInfo GensModInfo = { ModLoaderVer, GameVer };

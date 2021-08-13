@@ -24,6 +24,18 @@
     <ClInclude Include="include\ModLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="detours\include\detours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="detours\include\detver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="detours\include\syelog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -50,5 +62,11 @@
     <ClCompile Include="controllers\XboxSeries.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="detours\lib\x64\syelog.lib" />
+    <Library Include="detours\lib\x64\detours.lib" />
+    <Library Include="detours\lib\x86\detours.lib" />
+    <Library Include="detours\lib\x86\syelog.lib" />
   </ItemGroup>
 </Project>

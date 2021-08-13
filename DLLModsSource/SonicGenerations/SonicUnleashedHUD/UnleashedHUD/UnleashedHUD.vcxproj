@@ -155,6 +155,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DataHelper.h" />
+    <ClInclude Include="detours\include\detours.h" />
+    <ClInclude Include="detours\include\detver.h" />
+    <ClInclude Include="detours\include\syelog.h" />
+    <ClInclude Include="include\Helpers.h" />
     <ClInclude Include="include\inipp.h" />
     <ClInclude Include="include\ModLoader.h" />
   </ItemGroup>
@@ -167,6 +171,12 @@
     <ClCompile Include="controllers\XboxSeries.cpp" />
     <ClCompile Include="DataHelper.cpp" />
     <ClCompile Include="dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="detours\lib\x64\detours.lib" />
+    <Library Include="detours\lib\x64\syelog.lib" />
+    <Library Include="detours\lib\x86\detours.lib" />
+    <Library Include="detours\lib\x86\syelog.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

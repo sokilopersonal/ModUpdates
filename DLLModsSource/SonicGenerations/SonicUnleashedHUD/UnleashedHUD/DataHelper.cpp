@@ -1,12 +1,19 @@
 #include <memory>
 #include <windows.h>
 
+#include "detours\include\detours.h"
+#include "include\Helpers.h"
 #include "Controllers\Controller.h"
 
 /**
 	The game's process. Used in ForceWriteData()
 **/
 const HANDLE process = GetCurrentProcess();
+
+/**
+	The chosen button prompts. Defaults to XBOX360
+**/
+int buttonPrompts = XBOX360;
 
 /**
 	Changes permissions of a memory zone, writes on it,
@@ -46,8 +53,9 @@ void WriteButtons(ControllerInfo info) {
 	ForceWriteData((void*)0x0168BD44, info.bt, 12);
 }
 
-void WriteData(int buttonType, bool fixExtended) {
-	ControllerInfo info = GetXncpNames(buttonType, fixExtended);
+void WriteData(int buttonType) {
+	buttonPrompts = buttonType;
+	ControllerInfo info = GetXncpNames(buttonType, false);
 
 	WriteButtons(info);
 
@@ -56,4 +64,18 @@ void WriteData(int buttonType, bool fixExtended) {
 
 	ForceWriteData((void*)0x0168F1EC, "ui_gp_signul", 12);			// Used to add Unleashed's Ready GO animation without breaking missions.
 	ForceWriteData((void*)0x0155E5D8, "ui_lockon_cursar", 16);		// Used to keep the original Generations lock on cursor in the Time Eater boss battle.
+}
+
+int GetButtonPrompts() {
+	return buttonPrompts;
+}
+
+HOOK(int, __fastcall, CSonicContextSetSkill, 0xDFE980, void* context, void* Edx, uint32_t* a2)
+{
+	WRITE_MEMORY(0x109D669, char*, GetXncpNames(GetButtonPrompts(), a2[1] & 0x8).ui);
+	return originalCSonicContextSetSkill(context, Edx, a2);
+}
+
+void HookFunctions() {
+	INSTALL_HOOK(CSonicContextSetSkill);
 }
