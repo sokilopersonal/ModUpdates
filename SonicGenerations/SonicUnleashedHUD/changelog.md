@@ -1,4 +1,4 @@
-## Sonic Unleashed HUD v1.7.4
+## Sonic Unleashed HUD v1.7.5
 - Fixed missing files
 
 ## Sonic Unleashed HUD v1.7.4
