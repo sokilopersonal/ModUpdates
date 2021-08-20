@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.7.4
+- Fixed boost gauge gradient. It now properly fades to yellow like in Unleashed.
+- Force enable "Boost particles go to Sonic" code.
+
 ## Sonic Unleashed HUD v1.7.2
 - Added support for automatically detecting the Boost Gauge Up skill.
 - Removed the boost gauge up fix option in the mod's configuration.
