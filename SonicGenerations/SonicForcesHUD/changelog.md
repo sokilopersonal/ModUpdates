@@ -1,3 +1,6 @@
+## Sonic Forces HUD v1.1
+- Added Forces unused trick sounds
+
 ## Sonic Forces HUD v1.0.6
 - Improved support for Score Generations
 

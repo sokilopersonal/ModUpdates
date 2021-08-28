@@ -8,7 +8,8 @@
 			[
 				{
 					"Name": "ringFormatter",
-					"Description": [
+					"Description":
+					[
 						"Enable this to reduce the number of zeroes for the ring counter."
 					],
 					"DisplayName": "Use Forces' Ring Formatting",
@@ -19,7 +20,8 @@
 				},
 				{
 					"Name": "homingReticle",
-					"Description": [
+					"Description":
+					[
 						"Enable this to display the homing reticle from Sonic Forces."
 					],
 					"DisplayName": "Use Forces' Homing Reticle",
@@ -30,7 +32,8 @@
 				},
 				{
 					"Name": "windowTitle",
-					"Description": [
+					"Description":
+					[
 						"Enable this to display the Sonic Forces icon and name on the title bar."
 					],
 					"DisplayName": "Use Forces' Window Title",
@@ -41,7 +44,8 @@
 				},
 				{
 					"Name": "boostText",
-					"Description": [
+					"Description":
+					[
 						"Enable this to display the 'BOOST' text under the boost gauge - depending on lighting conditions, it can be hard to see."
 					],
 					"DisplayName": "Display 'BOOST' under the Boost Gauge",
@@ -52,7 +56,8 @@
 				},
 				{
 					"Name": "buttonType",
-					"Description": [
+					"Description":
+					[
 						"Select the type of button prompts to show in the game."
 					],
 					"DisplayName": "Button Prompts",
@@ -70,7 +75,8 @@
 			[
 				{
 					"Name": "difficultyType",
-					"Description": [
+					"Description":
+					[
 						"Choose how the rings behave based on the difficulty settings from Sonic Forces."
 					],
 					"DisplayName": "Difficulty",
@@ -81,7 +87,8 @@
 				},
 				{
 					"Name": "alwaysActiveReticle",
-					"Description": [
+					"Description":
+					[
 						"Enable this to make the homing reticle active at all times, just like Sonic Forces."
 					],
 					"DisplayName": "Always Active Homing Reticle",
@@ -99,18 +106,32 @@
 			[
 				{
 					"Name": "disk\\bb3.cpk",
-					"Description": [
+					"Description":
+					[
 						"Choose what game you want the menu sounds to be from."
 					],
 					"DisplayName": "Menu Sounds",
-					"Type": "SoundType",
+					"Type": "MenuSoundType",
 					"MinValue": null,
 					"MaxValue": null,
 					"DefaultValue": "disk\\wars_3\\bb3-forces.ini"
 				},
 				{
+					"Name": "trickSounds",
+					"Description":
+					[
+						"Choose how you want the unused trick sounds to behave."
+					],
+					"DisplayName": "Trick Sounds",
+					"Type": "TrickSoundType",
+					"MinValue": 0,
+					"MaxValue": 3,
+					"DefaultValue": 1
+				},
+				{
 					"Name": "homingSound",
-					"Description": [
+					"Description":
+					[
 						"Enable this to use the homing lock-on sound from Sonic Forces."
 					],
 					"DisplayName": "Use Forces' Homing Sound",
@@ -124,7 +145,7 @@
 	],
 	"Enums": 
 	{
-		"SoundType": 
+		"MenuSoundType": 
 		[
 			{
 				"DisplayName": "Forces",
@@ -143,11 +164,46 @@
 				]
 			}
 		],
+		"TrickSoundType": 
+		[
+			{
+				"DisplayName": "Enabled",
+				"Value": "1",
+				"Description": 
+				[
+					"Use Sonic Forces' unused trick sounds for air tricks and board tricks.",
+				]
+			},
+			{
+				"DisplayName": "Only for Air Tricks",
+				"Value": "2",
+				"Description": 
+				[
+					"Use Sonic Forces' unused trick sounds only for air tricks.",
+				]
+			},
+			{
+				"DisplayName": "Only for Board Tricks",
+				"Value": "3",
+				"Description": 
+				[
+					"Use Sonic Forces' unused trick sounds only for board tricks.",
+				]
+			},
+			{
+				"DisplayName": "Disabled",
+				"Value": "0",
+				"Description": 
+				[
+					"Use Sonic Generations trick sounds.",
+				]
+			}
+		],
 		"ButtonType": 
 		[
 			{
 				"DisplayName": "Xbox",
-				"Value": "0",
+				"Value": 0,
 				"Description": 
 				[
 					"Use Xbox One button prompts.",
@@ -155,7 +211,7 @@
 			},
 			{
 				"DisplayName": "PlayStation",
-				"Value": "1",
+				"Value": 1,
 				"Description": 
 				[
 					"Use DualShock 4 button prompts.",
@@ -163,7 +219,7 @@
 			},
 			{
 				"DisplayName": "Switch",
-				"Value": "2",
+				"Value": 2,
 				"Description": 
 				[
 					"Use Switch button prompts.",
@@ -174,7 +230,7 @@
 		[
 			{
 				"DisplayName": "Normal",
-				"Value": "0",
+				"Value": 0,
 				"Description": 
 				[
 					"Cap the rings at 100.",
@@ -182,7 +238,7 @@
 			},
 			{
 				"DisplayName": "Hard",
-				"Value": "1",
+				"Value": 1,
 				"Description": 
 				[
 					"Cap the rings at 999.",
