@@ -1,3 +1,8 @@
+## Debug Menu 1.2
+- Added more options to the environment editor
+- Improved user experience when editing environment values
+- Added a way to resume the game while in freecam by holding **L3**. By pressing **L3** and **SELECT**, you'll permanently resume and pause the game.
+
 ## Debug Menu 1.1
 - Added a free camera. Use the SELECT/BACK/VIEW button to enable it. Controls are listed in the [GameBanana page](https://gamebanana.com/mods/321353)
 - Improved HUD detection for the "Disable HUD" option
