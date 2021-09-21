@@ -1,3 +1,6 @@
+## Debug Menu 1.3
+- Added Player Speed
+
 ## Debug Menu 1.2
 - Added more options to the environment editor
 - Improved user experience when editing environment values
