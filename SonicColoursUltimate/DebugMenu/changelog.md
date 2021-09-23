@@ -1,3 +1,6 @@
+## Debug Menu 1.3.1
+- Improved player speed code
+
 ## Debug Menu 1.3
 - Added Player Speed
 
