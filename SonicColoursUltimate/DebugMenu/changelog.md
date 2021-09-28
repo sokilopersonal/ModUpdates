@@ -1,3 +1,6 @@
+## Debug Menu 1.3.2
+- Fixed a bug that made the game crash when exiting a stage
+
 ## Debug Menu 1.3.1
 - Improved player speed code
 
