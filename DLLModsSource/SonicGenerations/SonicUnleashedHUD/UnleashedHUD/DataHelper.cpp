@@ -4,6 +4,7 @@
 #include "detours\include\detours.h"
 #include "include\Helpers.h"
 #include "Controllers\Controller.h"
+#include "include\Common.h"
 
 /**
 	The game's process. Used in ForceWriteData()
@@ -76,6 +77,15 @@ HOOK(int, __fastcall, CSonicContextSetSkill, 0xDFE980, void* context, void* Edx,
 	return originalCSonicContextSetSkill(context, Edx, a2);
 }
 
+HOOK(void, __fastcall, Stage_CHudSonicStageUpdate, 0x1098A50, void* This, void* Edx, float* dt)
+{
+	// Always clamp boost to 100
+	*Common::GetPlayerBoost() = min(*Common::GetPlayerBoost(), 100.0f);
+
+	originalStage_CHudSonicStageUpdate(This, Edx, dt);
+}
+
 void HookFunctions() {
 	INSTALL_HOOK(CSonicContextSetSkill);
+	INSTALL_HOOK(Stage_CHudSonicStageUpdate);
 }

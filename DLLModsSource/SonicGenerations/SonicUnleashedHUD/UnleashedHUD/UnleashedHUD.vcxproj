@@ -158,6 +158,7 @@
     <ClInclude Include="detours\include\detours.h" />
     <ClInclude Include="detours\include\detver.h" />
     <ClInclude Include="detours\include\syelog.h" />
+    <ClInclude Include="include\Common.h" />
     <ClInclude Include="include\Helpers.h" />
     <ClInclude Include="include\inipp.h" />
     <ClInclude Include="include\ModLoader.h" />

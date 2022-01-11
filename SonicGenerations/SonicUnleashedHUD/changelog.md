@@ -1,3 +1,13 @@
+## Sonic Unleashed HUD v1.8
+- Implemented Score Generations support (thanks Exe.Qution!)
+- Extended default gauge size to render the full boost bar gradient
+- Tweaked the colours, font and position of the timer
+- Clamped boost gauge to 100% to avoid issues with extended boost gauge
+- Fixed issue where the Switch "X" button would appear in the skill activation prompt even when Switch button prompts were not selected
+- Fixed "Ring Energy" text getting cut
+- Fixed small empty line at the end of the boost gauge
+- Fixed animations issues (thanks Exe.Qution!)
+
 ## Sonic Unleashed HUD v1.7.5
 - Fixed missing files
 
