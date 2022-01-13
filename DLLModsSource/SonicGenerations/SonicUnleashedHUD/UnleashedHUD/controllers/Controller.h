@@ -26,20 +26,20 @@ typedef struct controller {
 /**
 	Gets XNCP names based on controller type. This must be changed when adding new controllers.
 **/
-ControllerInfo GetXncpNames(int buttonType, bool isFixExtended);
+ControllerInfo GetXncpNames(int buttonType, bool isFixExtended, bool isHideScore);
 
 /**
 	Definitions for the various controllers. This must be changed when adding new controllers.
 **/
 namespace Dualshock3 {
-	ControllerInfo getControllerInfo(bool isFixExtended);
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore);
 }
 namespace Switch {
-	ControllerInfo getControllerInfo(bool isFixExtended);
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore);
 }
 namespace Xbox360 {
-	ControllerInfo getControllerInfo(bool isFixExtended);
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore);
 }
 namespace XboxSeries {
-	ControllerInfo getControllerInfo(bool isFixExtended);
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore);
 }

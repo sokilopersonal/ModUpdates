@@ -7,6 +7,11 @@
 
 #define DEBUG_VECTOR3(vec3) vec3.x(),vec3.y(),vec3.z()
 
+#include <vector>
+#include <fstream>
+
+#include "include\IniReader.h"
+
 typedef void CSonicContext;
 CSonicContext** const PLAYER_CONTEXT = (CSonicContext**)0x1E5E2F0;
 CSonicContext** const pModernSonicContext = (CSonicContext**)0x1E5E2F8;
@@ -885,5 +890,105 @@ namespace Common
 	{
 		if (!*PLAYER_CONTEXT) return 0;
 		return (float*)((uint32_t)*PLAYER_CONTEXT + 0x5BC);
+	}
+
+	inline uint32_t GetMultiLevelAddress(uint32_t initAddress, std::vector<uint32_t> offsets)
+	{
+		uint32_t address = *(uint32_t*)initAddress;
+		for (uint32_t i = 0; i < offsets.size(); i++)
+		{
+			uint32_t const& offset = offsets[i];
+			address += offset;
+
+			if (i < offsets.size() - 1)
+			{
+				address = *(uint32_t*)address;
+			}
+		}
+		return address;
+	}
+
+	inline uint32_t GetCurrentStageID()
+	{
+		uint32_t stageIDAddress = GetMultiLevelAddress(0x1E66B34, { 0x4, 0x1B4, 0x80, 0x0 });
+		return *(uint32_t*)stageIDAddress;
+	}
+
+	inline bool IsCurrentStageBossBattle() {
+		uint8_t stageID = (uint8_t)GetCurrentStageID();
+		return stageID >= 0x13 && stageID <= 0x1A;
+	}
+
+	inline bool IsAtLoadingScreen()
+	{
+		uint32_t** hudCount = (uint32_t**)0x1E66B40;
+		if (!*hudCount) return false;
+		return (*hudCount)[2] > 0;
+	}
+
+	inline bool IsFileExist(std::string const& file)
+	{
+		struct stat buffer;
+		return stat(file.c_str(), &buffer) == 0;
+	}
+
+	inline void GetModIniList(std::vector<std::string>& modIniList)
+	{
+		char buffer[MAX_PATH];
+		GetModuleFileNameA(NULL, buffer, MAX_PATH);
+		std::string exePath(buffer);
+		std::string cpkRedirConfig = exePath.substr(0, exePath.find_last_of("\\")) + "\\cpkredir.ini";
+
+		if (!Common::IsFileExist(cpkRedirConfig))
+		{
+			printf("%s not exist.\n", cpkRedirConfig.c_str());
+			return;
+		}
+
+		INIReader reader(cpkRedirConfig);
+		std::string modsDatabase = reader.Get("CPKREDIR", "ModsDbIni", "mods\\ModsDB.ini");
+
+		if (!Common::IsFileExist(modsDatabase))
+		{
+			printf("%s not exist.\n", modsDatabase.c_str());
+			return;
+		}
+
+		INIReader modsDatabaseReader(modsDatabase);
+		int count = modsDatabaseReader.GetInteger("Main", "ActiveModCount", 0);
+		for (int i = 0; i < count; i++)
+		{
+			std::string guid = modsDatabaseReader.Get("Main", "ActiveMod" + std::to_string(i), "");
+			std::string config = modsDatabaseReader.Get("Mods", guid, "");
+			if (!config.empty() && Common::IsFileExist(config))
+			{
+				modIniList.push_back(config);
+			}
+		}
+	}
+
+	inline bool IsModIdEnabled(std::string const& id, std::string* o_iniPath = nullptr)
+	{
+		std::vector<std::string> modIniList;
+		GetModIniList(modIniList);
+
+		for (size_t i = 0; i < modIniList.size(); i++)
+		{
+			std::string const& config = modIniList[i];
+			INIReader configReader(config);
+			std::string modId = configReader.Get("Main", "ID", "");
+
+			if (modId == id)
+			{
+				if (o_iniPath)
+				{
+					*o_iniPath = config;
+				}
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

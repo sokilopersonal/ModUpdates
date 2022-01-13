@@ -5,4 +5,6 @@
 **/
 void WriteData(int buttonType);
 
+void DoOnFrame();
+
 void HookFunctions();

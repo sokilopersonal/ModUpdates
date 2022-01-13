@@ -17,6 +17,11 @@ const HANDLE process = GetCurrentProcess();
 int buttonPrompts = XBOX360;
 
 /**
+	If it's to fix the extended boost gauge. Defaults to false
+**/
+bool fixExtended = false;
+
+/**
 	Changes permissions of a memory zone, writes on it,
 	and then restores the previous permissions.
 **/
@@ -56,7 +61,7 @@ void WriteButtons(ControllerInfo info) {
 
 void WriteData(int buttonType) {
 	buttonPrompts = buttonType;
-	ControllerInfo info = GetXncpNames(buttonType, false);
+	ControllerInfo info = GetXncpNames(buttonType, fixExtended, !Common::IsModIdEnabled("HyperBE32.Score.Generations"));
 
 	WriteButtons(info);
 
@@ -73,7 +78,9 @@ int GetButtonPrompts() {
 
 HOOK(int, __fastcall, CSonicContextSetSkill, 0xDFE980, void* context, void* Edx, uint32_t* a2)
 {
-	WRITE_MEMORY(0x109D669, char*, GetXncpNames(GetButtonPrompts(), a2[1] & 0x8).ui);
+	fixExtended = a2[1] & 0x8;
+
+	WRITE_MEMORY(0x109D669, char*, GetXncpNames(GetButtonPrompts(), fixExtended, !Common::IsModIdEnabled("HyperBE32.Score.Generations") || Common::IsCurrentStageBossBattle()).ui);
 	return originalCSonicContextSetSkill(context, Edx, a2);
 }
 

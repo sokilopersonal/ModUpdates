@@ -1,7 +1,7 @@
 #include "Controller.h"
 
 namespace XboxSeries {
-	ControllerInfo getControllerInfo(bool isFixExtended) {
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore) {
 		ControllerInfo toReturn;
 
 		toReturn.controllertype = XBOXSERIES;
@@ -12,7 +12,10 @@ namespace XboxSeries {
 		toReturn.how = "ui_howxb";
 		toReturn.bt = "ui_btn_xbide";
 
-		toReturn.ui = isFixExtended ? "ui_gamexbaa" : "ui_gamexbay";
+		if (isFixExtended)
+			toReturn.ui = isHideScore ? "ui_gamexbac" : "ui_gamexbaa";
+		else
+			toReturn.ui = isHideScore ? "ui_gamexbab" : "ui_gamexbay";
 
 		return toReturn;
 	}

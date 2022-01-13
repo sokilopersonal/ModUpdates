@@ -10,6 +10,7 @@ add disk/bb/SonicActionCommonHud.ar.02
 add disk/bb/SonicActionCommonHud.ar.03
 add disk/bb/SonicActionCommonHud.ar.04
 add disk/bb/SonicActionCommonHud.ar.05
+add disk/bb/SonicActionCommonHud.ar.06
 add disk/bb/SonicActionCommonHud.arl
 add disk/bb/SonicActionCommon.ar.00
 add disk/bb/SonicActionCommon.arl
@@ -33,5 +34,7 @@ add disk/bb2/HowTo.ar.00
 add disk/bb2/HowTo.arl
 add disk/bb2/pam_cmn.ar.00
 add disk/bb2/pam_cmn.arl
+add disk/bb2/Result.ar.00
+add disk/bb2/Result.arl
 add disk/bb3/Application.ar.00
 add disk/bb3/Application.arl

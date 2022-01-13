@@ -1,7 +1,7 @@
 #include "Controller.h"
 
 namespace Dualshock3 {
-	ControllerInfo getControllerInfo(bool isFixExtended) {
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore) {
 		ControllerInfo toReturn;
 
 		toReturn.controllertype = PS3;
@@ -12,7 +12,10 @@ namespace Dualshock3 {
 		toReturn.how = "ui_howps";
 		toReturn.bt = "ui_btn_pside";
 
-		toReturn.ui = isFixExtended ? "ui_gamepsaa" : "ui_gamepsay";
+		if (isFixExtended)
+			toReturn.ui = isHideScore ? "ui_gamepsac" : "ui_gamepsaa";
+		else
+			toReturn.ui = isHideScore ? "ui_gamepsab" : "ui_gamepsay";
 
 		return toReturn;
 	}

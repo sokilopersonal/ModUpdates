@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v1.8.1
+- Fixed score counter background appearing when not intended
+
 ## Sonic Unleashed HUD v1.8
 - Implemented Score Generations support (thanks Exe.Qution!)
 - Extended default gauge size to render the full boost bar gradient

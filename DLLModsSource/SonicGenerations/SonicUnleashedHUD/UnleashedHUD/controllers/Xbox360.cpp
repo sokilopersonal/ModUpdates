@@ -1,7 +1,7 @@
 #include "Controller.h"
 
 namespace Xbox360 {
-	ControllerInfo getControllerInfo(bool isFixExtended) {
+	ControllerInfo getControllerInfo(bool isFixExtended, bool isHideScore) {
 		ControllerInfo toReturn;
 
 		toReturn.controllertype = XBOX360;
@@ -12,7 +12,10 @@ namespace Xbox360 {
 		toReturn.how = "ui_howto";
 		toReturn.bt = "ui_btn_guide";
 
-		toReturn.ui = isFixExtended ? "ui_gameplaa" : "ui_gameplay";
+		if (isFixExtended)
+			toReturn.ui = isHideScore ? "ui_gameplac" : "ui_gameplaa";
+		else
+			toReturn.ui = isHideScore ? "ui_gameplab" : "ui_gameplay";
 
 		return toReturn;
 	}
