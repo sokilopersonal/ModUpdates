@@ -1,3 +1,7 @@
+## Sonic Unleashed HUD v1.8.2
+- Made speedometer longer (thanks Exe.Qution!)
+- Fixed an issue where the wrong button prompts were being used for skills
+
 ## Sonic Unleashed HUD v1.8.1
 - Fixed score counter background appearing when not intended
 
