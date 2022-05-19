@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v2.0.1
+- Added Xbox 360 and Preview Build window icons. Select which window icon to use in the mod's configuration
+
 ## Sonic Unleashed HUD v2.0
 - Ported original YNCP file from Sonic Unleashed (BIG thanks Skyth!) and added custom code related to CSD. This introduces the following
     - Proper gameplay HUD with correct animations and colours
