@@ -30,6 +30,8 @@ add disk/bb/Languages/Japanese/SonicActionCommonHud.ar.00
 add disk/bb/Languages/Japanese/SonicActionCommonHud.arl
 add disk/bb/Languages/Spanish/SonicActionCommonHud.ar.00
 add disk/bb/Languages/Spanish/SonicActionCommonHud.arl
+add disk/bb2/#bsd.ar.00
+add disk/bb2/#bsd.arl
 add disk/bb2/HowTo.ar.00
 add disk/bb2/HowTo.arl
 add disk/bb2/pam_cmn.ar.00

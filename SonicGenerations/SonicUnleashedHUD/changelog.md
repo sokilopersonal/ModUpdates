@@ -1,3 +1,6 @@
+## Sonic Unleashed HUD v2.0.2
+- Fixed broken HUD in Shadow boss battle
+
 ## Sonic Unleashed HUD v2.0.1
 - Added Xbox 360 and Preview Build window icons. Select which window icon to use in the mod's configuration
 
