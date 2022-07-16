@@ -1,3 +1,15 @@
+## Sonic Unleashed HUD v2.1.0
+Update courtesy of brianuuuSonic
+- Added Unleashed result screen with E-rank support (including animations for Gens, Unleashed Sonic and Werehog)
+- Added Unleashed result music with E-rank and boss music support
+- Added Unleashed loading screens (stages/event viewer/tails text/missions). Supports both Generations and Unleashed Project stages.
+    - This includes support for custom loading screens for stage mods, by providing a `LoadingCustom.ar.00` file in bb2
+- Added Unleashed mission success/fail and game over prompts
+- Added Unleashed pause UI
+- Added 1-up and ring drop animations to the gameplay HUD
+- Added boss health bar
+- Added Unleashed UI font textures
+
 ## Sonic Unleashed HUD v2.0.2
 - Fixed broken HUD in Shadow boss battle
 
