@@ -57,6 +57,15 @@
     <ClInclude Include="ArchiveTreePatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HudResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HudLoading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HudPause.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DllMain.cpp">
@@ -78,6 +87,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArchiveTreePatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HudResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HudLoading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HudPause.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

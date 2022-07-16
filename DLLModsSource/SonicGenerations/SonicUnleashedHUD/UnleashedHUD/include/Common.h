@@ -23,6 +23,7 @@ uint32_t* const BACKBUFFER_HEIGHT = (uint32_t*)0x1DFDDE0;
 
 uint32_t const CStringConstructor = 0x6621A0;
 uint32_t const CStringDestructor = 0x661550;
+using SharedPtrTypeless = boost::shared_ptr<void>;
 
 enum SonicCollision : uint32_t
 {
@@ -915,8 +916,14 @@ namespace Common
 	}
 
 	inline bool IsCurrentStageBossBattle() {
-		uint8_t stageID = (uint8_t)GetCurrentStageID();
+		uint8_t stageID = GetCurrentStageID() & 0xFF;
 		return stageID >= 0x13 && stageID <= 0x1A;
+	}
+
+	inline bool IsCurrentStageMission()
+	{
+		uint8_t missionNumber = (GetCurrentStageID() & 0xFF00) >> 8;
+		return !IsCurrentStageBossBattle() && missionNumber > 0;
 	}
 
 	inline bool IsAtLoadingScreen()
@@ -924,6 +931,28 @@ namespace Common
 		uint32_t** hudCount = (uint32_t**)0x1E66B40;
 		if (!*hudCount) return false;
 		return (*hudCount)[2] > 0;
+	}
+
+	inline void PlaySoundStatic(SharedPtrTypeless& soundHandle, uint32_t cueID)
+	{
+		uint32_t* syncObject = *(uint32_t**)0x1E79044;
+		if (syncObject)
+		{
+			FUNCTION_PTR(void*, __thiscall, sub_75FA60, 0x75FA60, void* This, SharedPtrTypeless&, uint32_t cueId);
+			sub_75FA60((void*)syncObject[8], soundHandle, cueID);
+		}
+	}
+	
+	inline CSonicStateFlags* GetSonicStateFlags()
+	{
+		auto* const context = reinterpret_cast<int*>(*PLAYER_CONTEXT);
+		return reinterpret_cast<CSonicStateFlags*>(*reinterpret_cast<int*>(context[0x14D] + 4));
+	}
+	
+	inline bool IsPlayerSuper()
+	{
+		if (!*PLAYER_CONTEXT) return false;
+		return GetSonicStateFlags()->InvokeSuperSonic;
 	}
 
 	inline bool IsFileExist(std::string const& file)
@@ -989,6 +1018,47 @@ namespace Common
 			}
 		}
 
+		return false;
+	}
+
+	inline bool IsModNameEnabled(std::string const& testModName, std::string* o_iniPath = nullptr)
+	{
+		std::vector<std::string> modIniList;
+		GetModIniList(modIniList);
+		for (size_t i = 0; i < modIniList.size(); i++)
+		{
+			std::string const& config = modIniList[i];
+			INIReader configReader(config);
+			std::string name = configReader.Get("Desc", "Title", "");
+			if (name == testModName)
+			{
+				if (o_iniPath)
+				{
+					*o_iniPath = config;
+				}
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	inline bool DoesArchiveExist(std::string const& archiveName)
+	{
+		std::vector<std::string> modFolderList;
+		GetModIniList(modFolderList);
+		for (std::string& folder : modFolderList)
+		{
+			folder = folder.substr(0, folder.length() - 7);
+			for (const auto& dirEntry : std::filesystem::recursive_directory_iterator(folder))
+			{
+				if (dirEntry.path().filename() == archiveName)
+				{
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 }
