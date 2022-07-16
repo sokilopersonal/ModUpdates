@@ -72,6 +72,10 @@ void ArchiveTreePatcher::Install()
 			WRITE_STRING(0x1692BC4, "ui_howns");
 			break;
 
+		case Configuration::ButtonType::X360:
+			archiveDependencies.push_back(ArchiveDependency("Xbox360Buttons", { "SystemCommon" }));
+			break;
+
 		default:
 			break;
     }
