@@ -16,8 +16,6 @@ add disk/bb/#SonicActionCommonSWA.arl
 add disk/bb/SonicActionCommonHud.ar.00
 add disk/bb/SonicActionCommonHud.ar.01
 add disk/bb/SonicActionCommonHud.arl
-add disk/bb/SonicActionCommon.ar.00
-add disk/bb/SonicActionCommon.arl
 add disk/bb/SystemCommon.ar.00
 add disk/bb/SystemCommon.arl
 add disk/bb/Languages/English/SonicActionCommonHud.ar.00
@@ -121,3 +119,5 @@ delete disk/bb/SonicActionCommonHud.ar.03
 delete disk/bb/SonicActionCommonHud.ar.04
 delete disk/bb/SonicActionCommonHud.ar.05
 delete disk/bb/SonicActionCommonHud.ar.06
+delete disk/bb/SonicActionCommon.ar.00
+delete disk/bb/SonicActionCommon.arl
