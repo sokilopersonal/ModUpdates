@@ -1,3 +1,10 @@
+## Sonic Unleashed HUD v2.2.0
+Update courtesy of brianuuuSonic
+- HE1ML compatibility
+- Custom loading images are now set to an higher priority than Uneleashed Project
+- Added footer to pause menu
+- Added loading pictures for XBS and Switch
+
 ## Sonic Unleashed HUD v2.1.0
 Update courtesy of brianuuuSonic
 - Added Unleashed result screen with E-rank support (including animations for Gens, Unleashed Sonic and Werehog)
