@@ -1,7 +1,9 @@
 ## Sonic Unleashed HUD v2.2.0
 Update courtesy of brianuuuSonic
-- HE1ML compatibility
-- Custom loading images are now set to an higher priority than Uneleashed Project
+
+- HE1ML compatibility 
+    - ⚠️ This may break compatibility with the old loader. Be sure to update HedgeModManager after/before updating this mod!
+- Custom loading images are now set to an higher priority than Unleashed Project
 - Added footer to pause menu
 - Added loading pictures for XBS and Switch
 
