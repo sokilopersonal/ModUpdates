@@ -1,3 +1,6 @@
+## Debug Menu 1.3.3
+- Updated the update server URL
+
 ## Debug Menu 1.3.2
 - Fixed a bug that made the game crash when exiting a stage
 

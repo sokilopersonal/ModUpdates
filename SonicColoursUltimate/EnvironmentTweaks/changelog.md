@@ -1,3 +1,6 @@
+## Environment Tweaks 1.0.3
+- Updated the update server URL
+
 ## Environment Tweaks 1.0.2
 - Fixed some boss battles not using the correct environment files
 - General bug fixes

@@ -1,3 +1,6 @@
+## Sonic Forces HUD v1.1.1
+- Updated the update server URL 
+
 ## Sonic Forces HUD v1.1
 - Added Forces unused trick sounds
 
