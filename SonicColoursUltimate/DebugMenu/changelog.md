@@ -1,3 +1,8 @@
+## Debug Menu 1.4
+- Added player position info
+- Added support for debug watermark (customizable via mod configuration)
+- Added option to force all scene nodes to be visible (doesn't override Sonic Colours' streaming system). Fixes issues with some of the disappearing geometry in freecam
+
 ## Debug Menu 1.3.3
 - Updated the update server URL
 

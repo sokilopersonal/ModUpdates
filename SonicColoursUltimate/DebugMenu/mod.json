@@ -125,6 +125,36 @@
           "DefaultValue": "true"
         }
       ]
+    },
+    {
+      "Name": "Misc",
+      "DisplayName": "Miscelaneous",
+      "Elements": [
+        {
+          "Name": "watermark_enabled",
+          "DisplayName": "Watermark",
+          "Description":
+					[
+						"Enables a watermark on the top of the screen."
+					],
+          "Type": "Boolean",
+          "MinValue": null,
+          "MaxValue": null,
+          "DefaultValue": "false"
+        },
+        {
+          "Name": "watermark",
+          "DisplayName": "Watermark Text",
+          "Description":
+					[
+						"Set a custom text to display in the watermark. Leaving this empty will use the game's default value."
+					],
+          "Type": "string",
+					"MinValue": null,
+					"MaxValue": null,
+					"DefaultValue": ""
+        }
+      ]
     }
   ],
   "Enums": {
