@@ -948,7 +948,7 @@ public:
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
 
-		float ringScale = 1.142f;
+		float ringScale = 1.1895f;
 
 #define LERP(a, b) ((1.0f - EaseInCubic(m_Factor)) * (a) + EaseInCubic(m_Factor) * (b))
 
@@ -978,7 +978,7 @@ public:
 
 		m_Rotation = m_Rotation.slerp(updateInfo.DeltaTime * 6.0f, m_TargetRotation);
 
-		float travelDuration = 0.4525f;
+		float travelDuration = 0.4f;
 		m_Factor += updateInfo.DeltaTime / travelDuration;
 
 		if (m_Factor >= 0.995f)
