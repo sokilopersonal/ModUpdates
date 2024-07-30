@@ -556,7 +556,7 @@ public:
 		m_spModel = boost::make_shared<hh::mr::CSingleElement>(hh::mr::CMirageDatabaseWrapper(spDatabase.get()).GetModelData("cmn_obj_ring_HD"));
 		AddRenderable("Sparkle_FB", m_spModel, false);
 
-		constexpr float speed = 4.5f;
+		constexpr float speed = 4.2f;
 		float angle = ((float)std::rand() / RAND_MAX) * PI;
 		float width = (float)*(size_t*)0x1DFDDDC;
 		float height = (float)*(size_t*)0x1DFDDE0;
