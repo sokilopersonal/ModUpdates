@@ -556,7 +556,7 @@ public:
 		m_spModel = boost::make_shared<hh::mr::CSingleElement>(hh::mr::CMirageDatabaseWrapper(spDatabase.get()).GetModelData("cmn_obj_ring_HD"));
 		AddRenderable("Sparkle_FB", m_spModel, false);
 
-		constexpr float speed = 4.2f;
+		constexpr float speed = 4.5f;
 		float angle = ((float)std::rand() / RAND_MAX) * PI;
 		float width = (float)*(size_t*)0x1DFDDDC;
 		float height = (float)*(size_t*)0x1DFDDE0;
@@ -909,6 +909,7 @@ HOOK(void, __fastcall, CHudSonicStageUpdateParallel, 0x1098A50, Sonic::CGameObje
 	}
 }
 
+// GET RING EFFECT
 class CObjGetItem : public Sonic::CGameObject
 {
 	hh::math::CMatrix44 m_Transform;
@@ -947,7 +948,9 @@ public:
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
 
-#define LERP(a, b) ((1.0f - m_Factor) * (a) + (b) * m_Factor)
+		float ringScale = 1.142f;
+
+#define LERP(a, b) ((1.0f - EaseInCubic(m_Factor)) * (a) + EaseInCubic(m_Factor) * (b))
 
 		rTransform = m_Transform;
 
@@ -957,6 +960,8 @@ public:
 		rMatrix.col(0) /= LERP(1.0f, scale / 0.2f);
 		rMatrix.col(1) /= LERP(1.0f, scale / 0.2f);
 		rMatrix.col(2) /= LERP(1.0f, scale / 0.2f);
+
+		rTransform.scale(ringScale);
 
 		rTransform(0, 3) = LERP(rTransform(0, 3), -0.7765625f);
 		rTransform(1, 3) = LERP(rTransform(1, 3), -0.7833333333333333f);
@@ -973,10 +978,10 @@ public:
 
 		m_Rotation = m_Rotation.slerp(updateInfo.DeltaTime * 6.0f, m_TargetRotation);
 
-		m_Factor += updateInfo.DeltaTime * 0.125f;
-		m_Factor *= 1.2732395f;
+		float travelDuration = 0.4535f;
+		m_Factor += updateInfo.DeltaTime / travelDuration;
 
-		if (m_Factor > 1.0f)
+		if (m_Factor >= 0.975f)
 		{
 			SendMessage(m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
 
@@ -984,6 +989,11 @@ public:
 			rcScene->SetPosition(0, HudSonicStage::yAspectOffset);
 			rcScene->m_MotionRepeatType = Chao::CSD::eMotionRepeatType_PlayThenDestroy;
 		}
+	}
+
+	float EaseInCubic(float t) 
+	{
+		return t * t * t;
 	}
 
 	bool ProcessMessage(Hedgehog::Universe::Message& message,bool flag) override
