@@ -976,7 +976,7 @@ public:
 
 #undef LERP
 
-		m_Rotation = m_Rotation.slerp(updateInfo.DeltaTime * 6.0f, m_TargetRotation);
+		m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime * 3.5f), m_TargetRotation);
 
 		float travelDuration = 0.4f;
 		m_Factor += updateInfo.DeltaTime / travelDuration;
@@ -999,6 +999,11 @@ public:
 	float EaseInCubic(float t) 
 	{
 		return t * t * t;
+	}
+
+	float EaseOutCubic(float t) 
+	{
+		return 1 - pow(1 - t, 3);
 	}
 
 	bool ProcessMessage(Hedgehog::Universe::Message& message,bool flag) override
