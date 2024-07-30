@@ -978,10 +978,10 @@ public:
 
 		m_Rotation = m_Rotation.slerp(updateInfo.DeltaTime * 6.0f, m_TargetRotation);
 
-		float travelDuration = 0.4535f;
+		float travelDuration = 0.4525f;
 		m_Factor += updateInfo.DeltaTime / travelDuration;
 
-		if (m_Factor >= 0.975f)
+		if (m_Factor >= 0.995f)
 		{
 			SendMessage(m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
 
@@ -989,6 +989,11 @@ public:
 			rcScene->SetPosition(0, HudSonicStage::yAspectOffset);
 			rcScene->m_MotionRepeatType = Chao::CSD::eMotionRepeatType_PlayThenDestroy;
 		}
+	}
+
+	float Linear(float t) 
+	{
+		return t;
 	}
 
 	float EaseInCubic(float t) 
