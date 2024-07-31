@@ -960,7 +960,7 @@ public:
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
 
-		float ringScale = 1.135f;
+		float ringScale = 1.175f;
 
 #define LERP(a, b) ((1.0f - EaseInCubic(m_Factor)) * (a) + EaseInCubic(m_Factor) * (b))
 
@@ -988,11 +988,11 @@ public:
 
 #undef LERP
 
-		float travelDuration = 0.5f;
+		float travelDuration = 0.425f;
 
 		if (!m_activeRandomRotate)
 		{
-			m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime * 6.0f), m_TargetRotation);
+			m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime * 6.5f), m_TargetRotation);
 		}
 		else
 		{
@@ -1004,7 +1004,7 @@ public:
 		
 		m_Factor += updateInfo.DeltaTime / travelDuration;
 
-		if (m_Factor >= 0.9985f)
+		if (m_Factor >= 1.0f)
 		{
 			SendMessage(m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
 
@@ -1014,19 +1014,9 @@ public:
 		}
 	}
 
-	float Linear(float t) 
-	{
-		return t;
-	}
-
 	float EaseInCubic(float t) 
 	{
 		return t * t * t;
-	}
-
-	float EaseInQuint(float t) 
-	{
-		return t * t * t * t * t;
 	}
 
 	float EaseOutCubic(float t) 
