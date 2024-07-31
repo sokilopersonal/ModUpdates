@@ -12,9 +12,6 @@ Chao::CSD::RCPtr<Chao::CSD::CScene> rcSpeedCount;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcInfoCustom;
 boost::shared_ptr<Sonic::CGameObjectCSD> spPlayScreen;
 
-Chao::CSD::RCPtr<Chao::CSD::CProject> rcMedalScreen;
-boost::shared_ptr<Sonic::CGameObjectCSD> spMedalScreen;
-
 Chao::CSD::RCPtr<Chao::CSD::CProject> rcMissionScreen;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcPosition;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcCountdown;
@@ -65,9 +62,6 @@ void CreateScreen(Sonic::CGameObject* pParentGameObject)
 	
 	if (rcBossScreen && !spBossScreen)
 		pParentGameObject->m_pMember->m_pGameDocument->AddGameObject(spBossScreen = boost::make_shared<Sonic::CGameObjectCSD>(rcBossScreen, 0.5f, "HUD_B1", false), "main", pParentGameObject);
-
-	if (rcMedalScreen && !spMedalScreen)
-		pParentGameObject->m_pMember->m_pGameDocument->AddGameObject(spMedalScreen = boost::make_shared<Sonic::CGameObjectCSD>(rcMedalScreen, 0.5f, "HUD_B1", false), "main", pParentGameObject);
 }
 
 void KillScreen()
@@ -94,12 +88,6 @@ void KillScreen()
 	{
 		spBossScreen->SendMessage(spBossScreen->m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
 		spBossScreen = nullptr;
-	}
-
-	if (spMedalScreen)
-	{
-		spMedalScreen->SendMessage(spMedalScreen->m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
-		spMedalScreen = nullptr;
 	}
 }
 
