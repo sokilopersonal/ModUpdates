@@ -1167,8 +1167,6 @@ HOOK(void, __fastcall, CObjRingProcMsgHitEventCollision, 0x10534B0, Sonic::CGame
 	if (rcSpeedGauge && context->m_pPlayer->m_ActorID == in_rMsg.m_SenderActorID)
 	{
 		This->m_pMember->m_pGameDocument->AddGameObject(boost::make_shared<CObjGetRing>(This->m_spMatrixNodeTransform->m_Transform.m_Matrix));
-
-		printf("[SU HUD] Hitted ring\n");
 	}
 
 	originalCObjRingProcMsgHitEventCollision(This, Edx, in_rMsg);
@@ -1392,8 +1390,6 @@ void HudSonicStage::Install()
 	INSTALL_HOOK(ProcMsgSetPinballHud);
 	INSTALL_HOOK(CObjRingProcMsgHitEventCollision);
 	INSTALL_HOOK(ProcMsgRestartStage);
-
-	//WRITE_JUMP(0x16ACC4C, (void*)0x16ACC6B);
 
 	WRITE_JUMP(0x109C1DC, GetScoreEnabled);
 
