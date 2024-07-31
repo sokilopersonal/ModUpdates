@@ -1,4 +1,5 @@
 #include "HudSonicStage.h"
+using namespace Hedgehog::Math;
 Chao::CSD::RCPtr<Chao::CSD::CProject> rcPlayScreen;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcPlayerCount;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcTimeCount;
@@ -10,6 +11,9 @@ Chao::CSD::RCPtr<Chao::CSD::CScene> rcScoreCount;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcSpeedCount;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcInfoCustom;
 boost::shared_ptr<Sonic::CGameObjectCSD> spPlayScreen;
+
+Chao::CSD::RCPtr<Chao::CSD::CProject> rcMedalScreen;
+boost::shared_ptr<Sonic::CGameObjectCSD> spMedalScreen;
 
 Chao::CSD::RCPtr<Chao::CSD::CProject> rcMissionScreen;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcPosition;
@@ -37,7 +41,7 @@ bool isMission;
 size_t itemCountDenominator;
 float speed;
 size_t actionCount;
-hh::math::CVector2 infoCustomPos;
+CVector2 infoCustomPos;
 bool HudSonicStage::scoreEnabled;
 int lostRingCount;
 
@@ -61,6 +65,9 @@ void CreateScreen(Sonic::CGameObject* pParentGameObject)
 	
 	if (rcBossScreen && !spBossScreen)
 		pParentGameObject->m_pMember->m_pGameDocument->AddGameObject(spBossScreen = boost::make_shared<Sonic::CGameObjectCSD>(rcBossScreen, 0.5f, "HUD_B1", false), "main", pParentGameObject);
+
+	if (rcMedalScreen && !spMedalScreen)
+		pParentGameObject->m_pMember->m_pGameDocument->AddGameObject(spMedalScreen = boost::make_shared<Sonic::CGameObjectCSD>(rcMedalScreen, 0.5f, "HUD_B1", false), "main", pParentGameObject);
 }
 
 void KillScreen()
@@ -88,6 +95,12 @@ void KillScreen()
 		spBossScreen->SendMessage(spBossScreen->m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
 		spBossScreen = nullptr;
 	}
+
+	if (spMedalScreen)
+	{
+		spMedalScreen->SendMessage(spMedalScreen->m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
+		spMedalScreen = nullptr;
+	}
 }
 
 void ToggleScreen(const bool visible, Sonic::CGameObject* pParentGameObject)
@@ -98,7 +111,7 @@ void ToggleScreen(const bool visible, Sonic::CGameObject* pParentGameObject)
 		KillScreen();
 }
 
-hh::math::CVector2 SetMissionScenePosition(Chao::CSD::CScene* pScene, const size_t index)
+CVector2 SetMissionScenePosition(Chao::CSD::CScene* pScene, const size_t index)
 {
 	char name[4];
 	sprintf(name, "%02d", index);
@@ -168,7 +181,7 @@ void CreateRingGet()
 	FreezeMotion(rcRingGet.Get());
 }
 
-void SetRingGetPosition(const hh::math::CVector2& position, float offset = 0.0f)
+void SetRingGetPosition(const CVector2& position, float offset = 0.0f)
 {
 	if (rcRingGet)
 		rcRingGet->SetPosition(position.x() + offset - (rcCountdown ? 106 : 128), position.y() - (rcCountdown ? 199.5f : 200));
@@ -527,12 +540,12 @@ HOOK(void, __fastcall, CHudSonicStageDelayProcessImp, 0x109A8D0, Sonic::CGameObj
 
 class CObjDropRing : public Sonic::CGameObject
 {
-	hh::math::CMatrix44 m_Transform;
-	hh::math::CQuaternion m_Rotation;
-	hh::math::CQuaternion m_TargetRotation;
+	CMatrix44 m_Transform;
+	CQuaternion m_Rotation;
+	CQuaternion m_TargetRotation;
 
-	hh::math::CVector2 m_2DPosition;
-	hh::math::CVector2 m_2DVelocity;
+	CVector2 m_2DPosition;
+	CVector2 m_2DVelocity;
 	float m_LifeTime{};
 	boost::shared_ptr<hh::mr::CSingleElement> m_spModel;
 
@@ -540,7 +553,7 @@ public:
 	CObjDropRing()
 	{
 		const auto spCamera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera();
-		const hh::math::CMatrix viewTransform = spCamera->m_MyCamera.m_View * hh::math::CMatrix::Identity();
+		const CMatrix viewTransform = spCamera->m_MyCamera.m_View * CMatrix::Identity();
 		m_TargetRotation = viewTransform.rotation().inverse();
 		m_Transform = spCamera->m_MyCamera.m_Projection * viewTransform.matrix();
 		m_Transform.normalize();
@@ -560,9 +573,9 @@ public:
 		float angle = ((float)std::rand() / RAND_MAX) * PI;
 		float width = (float)*(size_t*)0x1DFDDDC;
 		float height = (float)*(size_t*)0x1DFDDE0;
-		m_2DVelocity = hh::math::CVector2(std::cosf(angle) / width * height, std::sinf(angle)) * speed;
+		m_2DVelocity = CVector2(std::cosf(angle) / width * height, std::sinf(angle)) * speed;
 
-		m_2DPosition = hh::math::CVector2(-0.7765625f, -0.7833333333333333f);
+		m_2DPosition = CVector2(-0.7765625f, -0.7833333333333333f);
 		m_LifeTime = 0.0f;
 	}
 
@@ -570,8 +583,8 @@ public:
 	{
 		const auto spCamera = m_pMember->m_pGameDocument->GetWorld()->GetCamera();
 
-		const hh::math::CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
-		const hh::math::CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
+		const CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
+		const CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
 
 		constexpr float gravity = -9.81f;
 		Hedgehog::Math::CVector2 const velPrev = m_2DVelocity;
@@ -910,19 +923,21 @@ HOOK(void, __fastcall, CHudSonicStageUpdateParallel, 0x1098A50, Sonic::CGameObje
 }
 
 // GET RING EFFECT
-class CObjGetItem : public Sonic::CGameObject
+class CObjGetRing : public Sonic::CGameObject
 {
-	hh::math::CMatrix44 m_Transform;
-	hh::math::CQuaternion m_Rotation;
-	hh::math::CQuaternion m_TargetRotation;
+	CMatrix44 m_Transform;
+	CQuaternion m_Rotation;
+	CQuaternion m_TargetRotation;
+	bool m_activeRandomRotate;
 	float m_Factor{};
+	float m_Angle;
 	boost::shared_ptr<hh::mr::CSingleElement> m_spModel;
 
 public:
-	CObjGetItem(const hh::math::CMatrix& in_rTransform) : m_Rotation(hh::math::CQuaternion::Identity())
+	CObjGetRing(const CMatrix& in_rTransform) : m_Rotation(CQuaternion::Identity())
 	{
 		const auto spCamera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera();
-		const hh::math::CMatrix viewTransform = spCamera->m_MyCamera.m_View * in_rTransform;
+		const CMatrix viewTransform = spCamera->m_MyCamera.m_View * in_rTransform;
 		m_TargetRotation = viewTransform.rotation().inverse();
 		m_Transform = spCamera->m_MyCamera.m_Projection * viewTransform.matrix();
 		m_Transform.normalize();
@@ -936,19 +951,28 @@ public:
 
 		m_spModel = boost::make_shared<hh::mr::CSingleElement>(hh::mr::CMirageDatabaseWrapper(spDatabase.get()).GetModelData("cmn_obj_ring_HD"));
 		AddRenderable("Sparkle_FB", m_spModel, false);
+
+		std::random_device dev;
+		std::mt19937 rng(dev());
+		std::uniform_int_distribution<std::mt19937::result_type> dist6(0, 1);
+
+		int r = dist6(rng);
+		m_activeRandomRotate = r == 1;
+		int t = dist6(rng);
+		m_Angle = t == 0 ? 360.0f : -360.0f;
 	}
 
 	void UpdateParallel(const Hedgehog::Universe::SUpdateInfo& updateInfo) override
 	{
 		const auto spCamera = m_pMember->m_pGameDocument->GetWorld()->GetCamera();
 
-		const hh::math::CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
-		const hh::math::CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
+		const CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
+		const CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
 
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
 
-		float ringScale = 1.1895f;
+		float ringScale = 1.135f;
 
 #define LERP(a, b) ((1.0f - EaseInCubic(m_Factor)) * (a) + EaseInCubic(m_Factor) * (b))
 
@@ -976,12 +1000,23 @@ public:
 
 #undef LERP
 
-		m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime * 3.5f), m_TargetRotation);
+		float travelDuration = 0.5f;
 
-		float travelDuration = 0.4f;
+		if (!m_activeRandomRotate)
+		{
+			m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime * 6.0f), m_TargetRotation);
+		}
+		else
+		{
+			float dur = travelDuration * 0.75f;
+			CQuaternion q = FromAxisAngle(m_Angle * updateInfo.DeltaTime / dur);
+
+			m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime / dur), q * m_TargetRotation);
+		}
+		
 		m_Factor += updateInfo.DeltaTime / travelDuration;
 
-		if (m_Factor >= 0.995f)
+		if (m_Factor >= 0.9985f)
 		{
 			SendMessage(m_ActorID, boost::make_shared<Sonic::Message::MsgKill>());
 
@@ -1001,9 +1036,29 @@ public:
 		return t * t * t;
 	}
 
+	float EaseInQuint(float t) 
+	{
+		return t * t * t * t * t;
+	}
+
 	float EaseOutCubic(float t) 
 	{
 		return 1 - pow(1 - t, 3);
+	}
+
+	CQuaternion FromAxisAngle(float angleDegrees)
+	{
+		float angleRadians = angleDegrees * PI / 180.0f;
+		float halfAngle = angleRadians / 2.0f;
+		float s = sin(halfAngle);
+
+		return CQuaternion
+		(
+			cos(halfAngle),
+			0.0f,
+			1.0f * s,
+			0.0f
+		);
 	}
 
 	bool ProcessMessage(Hedgehog::Universe::Message& message,bool flag) override
@@ -1024,23 +1079,23 @@ public:
 
 class CObjGetLife : public Sonic::CGameObject
 {
-	hh::math::CMatrix44 m_Transform;
-	hh::math::CQuaternion m_Rotation;
-	hh::math::CQuaternion m_TargetRotation;
+	CMatrix44 m_Transform;
+	CQuaternion m_Rotation;
+	CQuaternion m_TargetRotation;
 	float m_Factor{};
 	float m_LifeTime{};
 	boost::shared_ptr<hh::mr::CSingleElement> m_spModel;
 
 public:
-	CObjGetLife() : m_Rotation(hh::math::CQuaternion(0, 0, 1, 0))
+	CObjGetLife() : m_Rotation(CQuaternion(0, 0, 1, 0))
 	{
 		const auto spCamera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera();
 		auto* context = Sonic::Player::CPlayerSpeedContext::GetInstance();
-		const hh::math::CMatrix viewTransform = spCamera->m_MyCamera.m_View * (Eigen::Translation3f(context->m_spMatrixNode->m_Transform.m_Position) * hh::math::CQuaternion::Identity());
+		const CMatrix viewTransform = spCamera->m_MyCamera.m_View * (Eigen::Translation3f(context->m_spMatrixNode->m_Transform.m_Position) * CQuaternion::Identity());
 		m_TargetRotation = viewTransform.rotation().inverse();
 		m_Transform = spCamera->m_MyCamera.m_Projection * viewTransform.matrix();
 		m_Transform.normalize();
-		const hh::math::CMatrix viewTransform2 = hh::math::CQuaternion(0, 0, 1, 0) * spCamera->m_MyCamera.m_View;
+		const CMatrix viewTransform2 = CQuaternion(0, 0, 1, 0) * spCamera->m_MyCamera.m_View;
 		m_Rotation = viewTransform2.rotation().inverse();
 		m_LifeTime = 0.0f;
 	}
@@ -1059,8 +1114,8 @@ public:
 	{
 		const auto spCamera = m_pMember->m_pGameDocument->GetWorld()->GetCamera();
 
-		const hh::math::CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
-		const hh::math::CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
+		const CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
+		const CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
 
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
@@ -1123,7 +1178,9 @@ HOOK(void, __fastcall, CObjRingProcMsgHitEventCollision, 0x10534B0, Sonic::CGame
 	auto const* context = Sonic::Player::CPlayerSpeedContext::GetInstance();
 	if (rcSpeedGauge && context->m_pPlayer->m_ActorID == in_rMsg.m_SenderActorID)
 	{
-		This->m_pMember->m_pGameDocument->AddGameObject(boost::make_shared<CObjGetItem>(This->m_spMatrixNodeTransform->m_Transform.m_Matrix));
+		This->m_pMember->m_pGameDocument->AddGameObject(boost::make_shared<CObjGetRing>(This->m_spMatrixNodeTransform->m_Transform.m_Matrix));
+
+		printf("[SU HUD] Hitted ring\n");
 	}
 
 	originalCObjRingProcMsgHitEventCollision(This, Edx, in_rMsg);
@@ -1347,6 +1404,8 @@ void HudSonicStage::Install()
 	INSTALL_HOOK(ProcMsgSetPinballHud);
 	INSTALL_HOOK(CObjRingProcMsgHitEventCollision);
 	INSTALL_HOOK(ProcMsgRestartStage);
+
+	//WRITE_JUMP(0x16ACC4C, (void*)0x16ACC6B);
 
 	WRITE_JUMP(0x109C1DC, GetScoreEnabled);
 
