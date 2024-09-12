@@ -1,5 +1,4 @@
 #include "HudSonicStage.h"
-using namespace Hedgehog::Math;
 Chao::CSD::RCPtr<Chao::CSD::CProject> rcPlayScreen;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcPlayerCount;
 Chao::CSD::RCPtr<Chao::CSD::CScene> rcTimeCount;
@@ -38,7 +37,7 @@ bool isMission;
 size_t itemCountDenominator;
 float speed;
 size_t actionCount;
-CVector2 infoCustomPos;
+hh::math::CVector2 infoCustomPos;
 bool HudSonicStage::scoreEnabled;
 int lostRingCount;
 
@@ -99,7 +98,7 @@ void ToggleScreen(const bool visible, Sonic::CGameObject* pParentGameObject)
 		KillScreen();
 }
 
-CVector2 SetMissionScenePosition(Chao::CSD::CScene* pScene, const size_t index)
+hh::math::CVector2 SetMissionScenePosition(Chao::CSD::CScene* pScene, const size_t index)
 {
 	char name[4];
 	sprintf(name, "%02d", index);
@@ -169,7 +168,7 @@ void CreateRingGet()
 	FreezeMotion(rcRingGet.Get());
 }
 
-void SetRingGetPosition(const CVector2& position, float offset = 0.0f)
+void SetRingGetPosition(const hh::math::CVector2& position, float offset = 0.0f)
 {
 	if (rcRingGet)
 		rcRingGet->SetPosition(position.x() + offset - (rcCountdown ? 106 : 128), position.y() - (rcCountdown ? 199.5f : 200));
@@ -528,12 +527,12 @@ HOOK(void, __fastcall, CHudSonicStageDelayProcessImp, 0x109A8D0, Sonic::CGameObj
 
 class CObjDropRing : public Sonic::CGameObject
 {
-	CMatrix44 m_Transform;
-	CQuaternion m_Rotation;
-	CQuaternion m_TargetRotation;
+	hh::math::CMatrix44 m_Transform;
+	hh::math::CQuaternion m_Rotation;
+	hh::math::CQuaternion m_TargetRotation;
 
-	CVector2 m_2DPosition;
-	CVector2 m_2DVelocity;
+	hh::math::CVector2 m_2DPosition;
+	hh::math::CVector2 m_2DVelocity;
 	float m_LifeTime{};
 	boost::shared_ptr<hh::mr::CSingleElement> m_spModel;
 
@@ -541,7 +540,7 @@ public:
 	CObjDropRing()
 	{
 		const auto spCamera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera();
-		const CMatrix viewTransform = spCamera->m_MyCamera.m_View * CMatrix::Identity();
+		const hh::math::CMatrix viewTransform = spCamera->m_MyCamera.m_View * hh::math::CMatrix::Identity();
 		m_TargetRotation = viewTransform.rotation().inverse();
 		m_Transform = spCamera->m_MyCamera.m_Projection * viewTransform.matrix();
 		m_Transform.normalize();
@@ -561,9 +560,9 @@ public:
 		float angle = ((float)std::rand() / RAND_MAX) * PI;
 		float width = (float)*(size_t*)0x1DFDDDC;
 		float height = (float)*(size_t*)0x1DFDDE0;
-		m_2DVelocity = CVector2(std::cosf(angle) / width * height, std::sinf(angle)) * speed;
+		m_2DVelocity = hh::math::CVector2(std::cosf(angle) / width * height, std::sinf(angle)) * speed;
 
-		m_2DPosition = CVector2(-0.7765625f, -0.7833333333333333f);
+		m_2DPosition = hh::math::CVector2(-0.7765625f, -0.7833333333333333f);
 		m_LifeTime = 0.0f;
 	}
 
@@ -571,8 +570,8 @@ public:
 	{
 		const auto spCamera = m_pMember->m_pGameDocument->GetWorld()->GetCamera();
 
-		const CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
-		const CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
+		const hh::math::CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
+		const hh::math::CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
 
 		constexpr float gravity = -9.81f;
 		Hedgehog::Math::CVector2 const velPrev = m_2DVelocity;
@@ -913,19 +912,19 @@ HOOK(void, __fastcall, CHudSonicStageUpdateParallel, 0x1098A50, Sonic::CGameObje
 // GET RING EFFECT
 class CObjGetRing : public Sonic::CGameObject
 {
-	CMatrix44 m_Transform;
-	CQuaternion m_Rotation;
-	CQuaternion m_TargetRotation;
+	hh::math::CMatrix44 m_Transform;
+	hh::math::CQuaternion m_Rotation;
+	hh::math::CQuaternion m_TargetRotation;
 	bool m_activeRandomRotate;
 	float m_Factor{};
 	float m_Angle;
 	boost::shared_ptr<hh::mr::CSingleElement> m_spModel;
 
 public:
-	CObjGetRing(const CMatrix& in_rTransform) : m_Rotation(CQuaternion::Identity())
+	CObjGetRing(const hh::math::CMatrix& in_rTransform) : m_Rotation(hh::math::CQuaternion::Identity())
 	{
 		const auto spCamera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera();
-		const CMatrix viewTransform = spCamera->m_MyCamera.m_View * in_rTransform;
+		const hh::math::CMatrix viewTransform = spCamera->m_MyCamera.m_View * in_rTransform;
 		m_TargetRotation = viewTransform.rotation().inverse();
 		m_Transform = spCamera->m_MyCamera.m_Projection * viewTransform.matrix();
 		m_Transform.normalize();
@@ -954,8 +953,8 @@ public:
 	{
 		const auto spCamera = m_pMember->m_pGameDocument->GetWorld()->GetCamera();
 
-		const CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
-		const CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
+		const hh::math::CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
+		const hh::math::CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
 
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
@@ -997,7 +996,7 @@ public:
 		else
 		{
 			float dur = travelDuration * 0.75f;
-			CQuaternion q = FromAxisAngle(m_Angle * updateInfo.DeltaTime / dur);
+			hh::math::CQuaternion q = FromAxisAngle(m_Angle * updateInfo.DeltaTime / dur);
 
 			m_Rotation = m_Rotation.slerp(EaseOutCubic(updateInfo.DeltaTime / dur), q * m_TargetRotation);
 		}
@@ -1024,13 +1023,13 @@ public:
 		return 1 - pow(1 - t, 3);
 	}
 
-	CQuaternion FromAxisAngle(float angleDegrees)
+	hh::math::CQuaternion FromAxisAngle(float angleDegrees)
 	{
 		float angleRadians = angleDegrees * PI / 180.0f;
 		float halfAngle = angleRadians / 2.0f;
 		float s = sin(halfAngle);
 
-		return CQuaternion
+		return hh::math::CQuaternion
 		(
 			cos(halfAngle),
 			0.0f,
@@ -1057,23 +1056,23 @@ public:
 
 class CObjGetLife : public Sonic::CGameObject
 {
-	CMatrix44 m_Transform;
-	CQuaternion m_Rotation;
-	CQuaternion m_TargetRotation;
+	hh::math::CMatrix44 m_Transform;
+	hh::math::CQuaternion m_Rotation;
+	hh::math::CQuaternion m_TargetRotation;
 	float m_Factor{};
 	float m_LifeTime{};
 	boost::shared_ptr<hh::mr::CSingleElement> m_spModel;
 
 public:
-	CObjGetLife() : m_Rotation(CQuaternion(0, 0, 1, 0))
+	CObjGetLife() : m_Rotation(hh::math::CQuaternion(0, 0, 1, 0))
 	{
 		const auto spCamera = Sonic::CGameDocument::GetInstance()->GetWorld()->GetCamera();
 		auto* context = Sonic::Player::CPlayerSpeedContext::GetInstance();
-		const CMatrix viewTransform = spCamera->m_MyCamera.m_View * (Eigen::Translation3f(context->m_spMatrixNode->m_Transform.m_Position) * CQuaternion::Identity());
+		const hh::math::CMatrix viewTransform = spCamera->m_MyCamera.m_View * (Eigen::Translation3f(context->m_spMatrixNode->m_Transform.m_Position) * hh::math::CQuaternion::Identity());
 		m_TargetRotation = viewTransform.rotation().inverse();
 		m_Transform = spCamera->m_MyCamera.m_Projection * viewTransform.matrix();
 		m_Transform.normalize();
-		const CMatrix viewTransform2 = CQuaternion(0, 0, 1, 0) * spCamera->m_MyCamera.m_View;
+		const hh::math::CMatrix viewTransform2 = hh::math::CQuaternion(0, 0, 1, 0) * spCamera->m_MyCamera.m_View;
 		m_Rotation = viewTransform2.rotation().inverse();
 		m_LifeTime = 0.0f;
 	}
@@ -1092,8 +1091,8 @@ public:
 	{
 		const auto spCamera = m_pMember->m_pGameDocument->GetWorld()->GetCamera();
 
-		const CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
-		const CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
+		const hh::math::CMatrix44 invProj = spCamera->m_MyCamera.m_Projection.inverse();
+		const hh::math::CMatrix invView = spCamera->m_MyCamera.m_View.inverse();
 
 		auto& rTransform = m_spModel->m_spInstanceInfo->m_Transform;
 		auto& rMatrix = rTransform.matrix();
